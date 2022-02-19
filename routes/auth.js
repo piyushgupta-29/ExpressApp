@@ -1,103 +1,44 @@
 const express = require('express');
 const router = express.Router();
 
-require('../db/conn');
-const User = require("../models/userSchema");
-
-router.get('/api1', async(req, res) => {
+router.get('/api/1', async(req, res) => {
     try{
-        // const data = await User.find({});
-        res.send(`Response from api1`);
+        let x = 4;
+        
+        res.send(x.toString());
     }
     catch(err){
         console.log('could not get data');
     }
 });
 
-router.get('/api2', async(req,res) => {
+router.get('/api/2', async(req,res) => {
     try{
-        // const data = await User.find({});
-        res.send(`Response from api2`);
+        let x = 5.3;
+        res.send(x.toString());
     }
     catch(err){
         console.log('could not get data');
     }
 });
 
-router.get('/api3', async(req,res) => {
+router.get('/api/3', async(req,res) => {
     try{
-        // const data = await User.find({});
-        res.send(`Response from api3`);
+        let x = [4,5.3,6.9,4.0,3.3];
+        res.send(x.toString());
     }
     catch(err){
         console.log('could not get data');
     }
 });
 
-router.get('/api4', async(req,res) => {
+router.get('/api/4', async(req,res) => {
     try{
-        // const data = await User.find({});
-        res.send(`Response from api4`);
-    }
-    catch(err){
-        console.log('could not get data');
-    }
-});
-
-router.get('/api5', async(req,res) => {
-    try{
-        // const data = await User.find({});
-        res.send(`Response from api5`);
-    }
-    catch(err){
-        console.log('could not get data');
-    }
-});
-
-router.get('/api6', async(req,res) => {
-    try{
-        // const data = await User.find({});
-        res.send(`Response from api6`);
-    }
-    catch(err){
-        console.log('could not get data');
-    }
-});
-
-router.get('/api7', async(req,res) => {
-    try{
-        // const data = await User.find({});
-        res.send(`Response from api7`);
-    }
-    catch(err){
-        console.log('could not get data');
-    }
-});
-
-router.get('/api8', async(req,res) => {
-    try{
-        // const data = await User.find({});
-        res.send(`Response from api8`);
-    }
-    catch(err){
-        console.log('could not get data');
-    }
-});
-
-router.get('/api9', async(req, res) => {
-    try{
-        // const data = await User.find({});
-        res.send(`Response from api9`);
-    }
-    catch(err){
-        console.log('could not get data');
-    }
-});
-
-router.get('/api10', async(req, res) => {
-    try{
-        // const data = await User.find({});
-        res.send(`Response from api10`);
+        let x = [3,4.2,9.8,6];
+        let time = new Date();
+        res.write(x.toString()+'\n');
+        res.write(time.toTimeString());
+        res.send();
     }
     catch(err){
         console.log('could not get data');

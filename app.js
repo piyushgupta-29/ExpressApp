@@ -8,8 +8,8 @@ dotenv.config({ path: './.env' });
 require('./db/conn');
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname,'/views')));
-app.set('view engine','ejs');
+// app.use(express.static(path.join(__dirname,'/views')));
+// app.set('view engine','ejs');
 app.use(require('./routes/auth'));
 
 const PORT = process.env.PORT;
