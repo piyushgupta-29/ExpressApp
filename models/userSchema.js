@@ -2,7 +2,8 @@ const mongooose = require('mongoose');
 
 const userSchema = new mongooose.Schema({
     data: {
-        
+        type: Number,
+        default:Math.random
     },
     date: {
         type: Date,
