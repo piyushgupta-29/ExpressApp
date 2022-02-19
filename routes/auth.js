@@ -36,8 +36,11 @@ router.get('/api/4', async(req,res) => {
     try{
         let x = [3,4.2,9.8,6];
         let time = new Date();
+        let h = time.getHours().toString();
+        let m = time.getMinutes().toString();
+        let s = time.getSeconds().toString();
         res.write(x.toString()+'\n');
-        res.write(time.toTimeString());
+        res.write(`${h}:${m}:${s}`);
         res.send();
     }
     catch(err){
