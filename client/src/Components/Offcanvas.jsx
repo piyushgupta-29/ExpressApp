@@ -3,10 +3,10 @@ import { useState } from "react";
 
 const Offcanvas = (props) => {
 
-    let [cord,setCord] = useState({
+    let [cord,setCord] = useState([{
         label:"",
         threshold:"",
-    });
+    }]);
     let [topic,setTopic] = useState('');
     let [label1,setLabel1] = useState('');
     let [label2,setLabel2] = useState('');
@@ -43,35 +43,66 @@ const Offcanvas = (props) => {
         }
         else
         {
-            if(label1!=''&&threshold1!='')
-                setCord([...cord,{label:label1,threshold:threshold1}]);
-            if(label2!=''&&threshold2!='')
-                setCord([...cord,{label:label2,threshold:threshold2}]);
-            if(label3!=''&&threshold3!='')
-                setCord([...cord,{label:label3,threshold:threshold3}]);
-            if(label4!=''&&threshold4!='')
-                setCord([...cord,{label:label4,threshold:threshold4}]);
-            if(label5!=''&&threshold5!='')
-                setCord([...cord,{label:label5,threshold:threshold5}]);
-            if(label6!=''&&threshold6!='')
-                setCord([...cord,{label:label6,threshold:threshold6}]);
-            if(label7!=''&&threshold7!='')
-                setCord([...cord,{label:label7,threshold:threshold7}]);
-            if(label8!=''&&threshold8!='')
-                setCord([...cord,{label:label8,threshold:threshold8}]);
-            if(label9!=''&&threshold9!='')
-                setCord([...cord,{label:label9,threshold:threshold9}]);
-            if(label10!=''&&threshold10!='')
-                setCord([...cord,{label:label10,threshold:threshold10}]);
+            if(label1!=''&&threshold1!=''){
+                setCord((preval)=>{
+                    return [...preval,{label:label1,threshold:threshold1}]
+                });
+            }
+            if(label2!=''&&threshold2!=''){
+                setCord((preval)=>{
+                    return [...preval,{label:label2,threshold:threshold2}]
+                });
+            }
+            if(label3!=''&&threshold3!=''){
+                setCord((preval)=>{
+                    return [...preval,{label:label3,threshold:threshold3}]
+                });
+            }
+            if(label4!=''&&threshold4!=''){
+                setCord((preval)=>{
+                    return [...preval,{label:label4,threshold:threshold4}]
+                });
+            }
+            if(label5!=''&&threshold5!=''){
+                setCord((preval)=>{
+                    return [...preval,{label:label5,threshold:threshold5}]
+                });
+            }
+            if(label6!=''&&threshold6!=''){
+                setCord((preval)=>{
+                    return [...preval,{label:label6,threshold:threshold6}]
+                });
+            }
+            if(label7!=''&&threshold7!=''){
+                setCord((preval)=>{
+                    return [...preval,{label:label7,threshold:threshold7}]
+                });
+            }
+            if(label8!=''&&threshold8!=''){
+                setCord((preval)=>{
+                    return [...preval,{label:label8,threshold:threshold8}]
+                });
+            }
+            if(label9!=''&&threshold9!=''){
+                setCord((preval)=>{
+                    return [...preval,{label:label9,threshold:threshold9}]
+                });
+            }
+            if(label10!=''&&threshold10!=''){
+                setCord((preval)=>{
+                    return [...preval,{label:label10,threshold:threshold10}]
+                });
+            }
+            console.log(label1);
+            // cord.map((val)=>{ console.log(val.label,val.threshold) });
+            console.log(cord);
+            console.log(topic);
             props.oSelect(cord,topic);
         }
     }   
-    let hideOffcanvas = () => {
-        
-    }
     return (
         <>
-            <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div className="offcanvas-header">
                     <h5 id="offcanvasRightLabel">Add new widget</h5>
                     <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -79,11 +110,11 @@ const Offcanvas = (props) => {
                 <div className="offcanvas-body">
                     <div className="card mb-2">
                         <div className="card-body">
-                            <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={hideOffcanvas}>
+                            <button type="button" className="nsbtn text-reset" data-bs-toggle="modal" data-bs-dismiss="offcanvas" data-bs-target="#exampleModal" aria-label="Close">
                                 Bar Chart
                             </button>
 
-                            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div className="modal-dialog">
                                 <div className="modal-content">
                                 <div className="modal-header">
