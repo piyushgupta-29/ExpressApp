@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-let totalDevices = 1;
+let totalDevices = 0;
 
 export let showDevices = (state=totalDevices,action) => {
     switch(action.type)

@@ -4,7 +4,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import { MdDeveloperBoard } from "react-icons/md";
 import { addDevice } from '../action';
 
-const CreateDevices = () => {
+const CreateDevices = (props) => {
 
     let [device,setDevice] = useState('');
     let dispatch = useDispatch();
@@ -45,8 +45,8 @@ const CreateDevices = () => {
                                         <input type="text" name="device_label" value={device} style={{ textTransform: "lowercase",width: "100%" }} />
                                     </div>
                                     <div className="modal-footer">
-                                        <button type="button" className="btn btn-primary text-reset" data-bs-dismiss="modal" 
-                                        data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => { dispatch( addDevice() ) }}>
+                                        <button type="button" className="btn btn-primary" data-bs-dismiss="modal" 
+                                        data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => { dispatch( addDevice() ); props.onselect(device); }}>
                                             Add Device
                                         </button>
                                     </div>

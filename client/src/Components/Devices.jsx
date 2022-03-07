@@ -1,17 +1,25 @@
 import React from 'react'
+import { useState } from 'react';
+import { useDispatch,useSelector } from 'react-redux'
+import { MdDelete } from "react-icons/md";
 
-const Devices = () => {
-  return (
-    <>
-        <div className="card" style="width: 18rem;">
-            <img src="..." className="card-img-top" alt="..." />
-            <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" className="btn btn-primary">Go somewhere</a>
+const Devices = (props) => {
+
+    let [device,setDevice] = useState('');
+    let dispatch = useDispatch();
+
+    return (
+        <>
+            <div className="card" style={{width: "18rem"}}>
+                <div className='device_title d-flex'>
+                    <p style={{ color: "white", fontSize: "1.5rem", alignSelf: "flex-end", paddingLeft: "1rem"}}>{props.devname}</p>
+                </div>
+                <div className="card-body">
+                    <span className="card-text">0 Variables</span>
+                    <MdDelete style={{ fontSize: "2rem",color: "rgb(0,0,0,.5)", marginLeft: "7rem" }} />
+                </div>
             </div>
-        </div>
-    </>
+        </>
   )
 }
 
