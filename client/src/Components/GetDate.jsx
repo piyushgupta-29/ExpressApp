@@ -14,10 +14,9 @@ const GetDate = () => {
     return (
         <>
             <BsFillCalendarFill className='calendar'/>
-            <p>{dat}</p>
+            <p style={{ fontSize: "1rem" , marginTop: ".5rem"}}>{dat}</p>
         </>
     );
 }
 
 export default GetDate;
-

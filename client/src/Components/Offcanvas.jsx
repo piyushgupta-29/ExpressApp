@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const Offcanvas = (props) => {
+const Offcanvas = () => {
 
     let [cord,setCord] = useState([{
         label:"",
@@ -97,7 +97,6 @@ const Offcanvas = (props) => {
             // cord.map((val)=>{ console.log(val.label,val.threshold) });
             console.log(cord);
             console.log(topic);
-            props.oSelect(cord,topic);
         }
     }   
     return (
