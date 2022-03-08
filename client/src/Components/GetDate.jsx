@@ -2,7 +2,7 @@ import React from 'react';
 import { BsFillCalendarFill } from "react-icons/bs";
 
 const GetDate = () => {
-    const days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const d = new Date();
     let minutes = d.getMinutes();
     let hours = d.getHours();

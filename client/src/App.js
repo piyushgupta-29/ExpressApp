@@ -18,8 +18,8 @@ function App() {
         <>
             <Navbar />
             <div className="second-nav">
-                <FaAlignJustify className='falist'/>
-                <p>First Dashboard</p>
+                {/* <FaAlignJustify className='falist'/> */}
+                <p>Devices</p>
                 <GetDate className="date"/>
             </div>
             {/* { showWidget ? <AddWidget onSelect={addChart}/> : null }

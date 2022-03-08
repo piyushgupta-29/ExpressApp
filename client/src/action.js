@@ -1,11 +1,13 @@
-export let addDevice = () => {
+export let addDevice = (data) => {
     return {
-        type: "INCR"
+        type: "INCR",
+        payload: data
     }
 }
 
-export let removeDevice = () => {
+export let removeDevice = (data) => {
     return {
-        type: "DECR"
+        type: "DECR",
+        payload: data
     }
 }

@@ -1,11 +1,21 @@
 import { combineReducers } from 'redux'
-let totalDevices = 0;
+
+let totalDevices = [];
+let state = [
+    ...totalDevices
+];
 
 export let showDevices = (state=totalDevices,action) => {
     switch(action.type)
     {
-        case "INCR": return state+1;
-        case "DECR": return state-1;
+        case "INCR": 
+        return [
+        ...state, action.payload
+        ]
+        case "DECR": 
+        return [  
+            ...state, state.filter(todo => todo.id !== action.payload) 
+        ]
         default: return state;
     }
 }
