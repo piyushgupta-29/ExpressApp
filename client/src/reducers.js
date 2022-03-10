@@ -1,11 +1,8 @@
 import { combineReducers } from 'redux'
 
-let totalDevices = [
-    
-];
+let totalDevices = [];
 let totalLabels = [];
 let totalThresholds = [];
-
 
 export let showDevices = (state=totalDevices,action) => {
     switch(action.type)
@@ -31,7 +28,6 @@ export let showLabels = (state=totalLabels,action) => {
         return [
             ...state,action.payload
         ]
-
         default: return state;
     }
 }
@@ -43,7 +39,6 @@ export let showThresholds = (state=totalThresholds,action) => {
         return [
             ...state,action.payload
         ]
-
         default: return state;
     }
 }
