@@ -6,9 +6,6 @@ let totalDevices = [
 let totalLabels = [];
 let totalThresholds = [];
 
-// let state = [
-//     ...totalDevices
-// ];
 
 export let showDevices = (state=totalDevices,action) => {
     switch(action.type)
