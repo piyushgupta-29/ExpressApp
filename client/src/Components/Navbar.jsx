@@ -1,13 +1,15 @@
 import React from 'react';
 import { FaBell,FaQuestionCircle } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
+// import logo from './images/logo.png'
 
 const Navbar = () => {
   return (
     <>
         <nav className="navbar navbar-expand-lg navbar-dark">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#"><h2>Ubidots</h2></a>
+                    {/* <img src={logo} alt="" /> */}
+                    <a className="navbar-brand" href="#"><h2>Altruism Labs</h2></a>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item dropdown">

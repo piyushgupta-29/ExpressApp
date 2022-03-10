@@ -1,19 +1,13 @@
 import './App.css';
-import React,{ useState } from 'react';
-import { FaAlignJustify } from "react-icons/fa";
+import React from 'react';
 import { Route, Routes } from 'react-router-dom'
-import BarChart from './Components/BarChart';
-import AddWidget from './Components/AddWidget';
+import ShowWidget from './Components/ShowWidget';
 import GetDate from "./Components/GetDate";
 import Navbar from './Components/Navbar';
 import DevicePage from './Components/DevicePage';
-import { useSelector } from 'react-redux';
+import VariablePage from './Components/VariablePage'
 
 function App() {
-    // let [showWidget,setShowWidget] = useState(true);
-    // let [showBar,setShowBar] = useState(false);
-    // let [topic,setTopic] = useState('');
-    // let [cord,setCord] = useState([{}]);
     return (
         <>
             <Navbar />
@@ -22,11 +16,10 @@ function App() {
                 <p>Devices</p>
                 <GetDate className="date"/>
             </div>
-            {/* { showWidget ? <AddWidget onSelect={addChart}/> : null }
-            { showBar ? <BarChart title={topic} cd={cord}/> : null } */}
             <Routes>
-                <Route exact path='/' element={<AddWidget />}></Route>
-                <Route exact path='/devices' element={<DevicePage />}></Route>
+                <Route exact path='/' element={<ShowWidget />} />
+                <Route exact path='/devices' element={<DevicePage />} />
+                <Route path='/variables/:name' element={<VariablePage />} />
             </Routes>
         </>
     );

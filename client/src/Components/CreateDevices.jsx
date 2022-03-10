@@ -2,23 +2,23 @@ import React from 'react'
 import { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux'
 import { addDevice } from '../action';
+import { FaPlus } from 'react-icons/fa'
 
 const CreateDevices = (props) => {
 
     let [device,setDevice] = useState('');
     let dispatch = useDispatch();
-
+    let str = 'Create Device';
     let myfunc = () => {
-        console.log(device);
-        dispatch( addDevice(device) ); 
-        props.onselect(device); 
-        
+        dispatch( addDevice(device) );    
     }
     return (
-        <>
-            <button className="btn btn-outline-primary rounded-pill" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Create Device</button>
+        <div className='mt-3'>
+            <button className="btn btn-primary rounded-pill" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                { props.btn ? <FaPlus style={{ fontSize: "13px" }}/> : str }
+            </button>
 
-            <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div className="offcanvas-header">
                     <h5 id="offcanvasRightLabel">Add New Device</h5>
                     <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -45,7 +45,7 @@ const CreateDevices = (props) => {
                         </button>
                     </div>
                 
-                <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -66,7 +66,7 @@ const CreateDevices = (props) => {
                 </div>
                 </div>
             </div>
-        </>
+        </div>
   )
 }
 
