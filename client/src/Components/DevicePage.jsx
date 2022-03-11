@@ -8,8 +8,7 @@ import { MdDeveloperBoard } from "react-icons/md";
 const DevicePage = () => {
 
     let myState = useSelector((state)=> state.showDevices );
-    console.log(myState);
-
+    
     return (
         <> 
             <div className='container d-flex justify-content-end'>
@@ -19,9 +18,9 @@ const DevicePage = () => {
                 <div className="container">
                     <div className="row">
                         {myState.map((devname,id) => { 
-                        return (
+                        return ( 
                             <div className='col-md-4'>
-                                <Devices devname={devname} key={id} id={id}/>
+                                <Devices devname={devname.dev_name} key={id} id={id}/>
                             </div>  
                         )} )}
                     </div>

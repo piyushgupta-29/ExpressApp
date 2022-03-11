@@ -19,7 +19,7 @@ function App() {
             <Routes>
                 <Route exact path='/' element={<ShowWidget />} />
                 <Route exact path='/devices' element={<DevicePage />} />
-                <Route path='/variables/:name' element={<VariablePage />} />
+                <Route path='/variables/:name/:id' element={<VariablePage />} />
             </Routes>
         </>
     );

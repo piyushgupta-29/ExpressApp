@@ -12,7 +12,7 @@ const Charts = (props) => {
         <>
             <div style={{ width: 700 }} className="d-flex">
                 
-            { props.type === "Bar" ? <Bar
+            { props.type === "Pie" ? <Pie
                 data={ {
                     labels: totalLabel.map((val) => val ),
                     datasets: [{
@@ -33,7 +33,7 @@ const Charts = (props) => {
                     }
                 ]
                 }} 
-                /> : <Pie
+                /> : <Bar
                 data={ {
                     labels: totalLabel.map((val) => val ),
                     datasets: [{
