@@ -5,14 +5,13 @@ import { useSelector } from "react-redux";
 
 const Charts = (props) => {
 
-    let totalLabel = useSelector(state => state.showLabels );
-    let totalThreshold = useSelector(state => state.showThresholds );
+    let totalCharts = useSelector(state => state.showCharts );
 
     return (
         <>
             <div style={{ width: 700 }} className="d-flex">
                 
-            { props.type === "Pie" ? <Pie
+            {/* { props.type === "Pie" ? <Pie
                 data={ {
                     labels: totalLabel.map((val) => val ),
                     datasets: [{
@@ -32,19 +31,19 @@ const Charts = (props) => {
                         backgroundColor: 'blue'
                     }
                 ]
-                }} 
-                /> : <Bar
+                }} /> : */}
+                <Line
                 data={ {
-                    labels: totalLabel.map((val) => val ),
+                    labels: props.labels.map((val) => val ),
                     datasets: [{
                         label: props.topic,
-                        data: totalThreshold.map(val => val ),
+                        data: props.thresholds.map(val => val ),
                         backgroundColor: 'blue'
                     }
                 ]
                 }}
                 />
-            }
+            {/* } */}
             </div>
         </>
     );

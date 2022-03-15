@@ -1,15 +1,15 @@
 import React from 'react';
 import { FaBell,FaQuestionCircle } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
-// import logo from './images/logo.png'
+// import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <>
         <nav className="navbar navbar-expand-lg navbar-dark">
                 <div className="container-fluid">
-                    {/* <img src={logo} alt="" /> */}
-                    <a className="navbar-brand" href="#"><h2>Altruism Labs</h2></a>
+                    <img src="images/logo.png" alt="" style={{ width: "150px", marginRight: "500px"}}/>
+                    {/* <a className="navbar-brand" href="#"><h2>Altruism Labs</h2></a> */}
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item dropdown">

@@ -1,46 +1,83 @@
-exports.first_api = async(req, res) => {
+let devices = require('../models/deviceModel');
+let charts = require('../models/chartModel');
+
+exports.get_charts = async(req, res) => {
     try{
-        let x = 4;
-        
-        res.send(x.toString());
+        let chart = await charts.find({});
+        res.send(chart);
     }
     catch(err){
-        console.log('could not get data');
+        res.status(404).send('could not get data');
     }
 }
 
-exports.second_api = async(req,res) => {
+exports.add_chart = async(req,res) => {
     try{
-        let x = 5.3;
-        res.send(x.toString());
+        let newChart = await charts.insertOne({ 
+            topic: req.body.topic,
+            type: 'Bar',
+            labels: [],
+            thresholds: []
+        });
+        res.status(201).send('Chart inserted');
     }
     catch(err){
-        console.log('could not get data');
+        res.status(404).send('could not get data');
     }
 }
 
-exports.third_api = async(req,res) => {
+exports.get_devices = async(req, res) => {
     try{
-        let x = [4,5.3,6.9,4.0,3.3];
-        res.send(x.toString());
+        let device = await devices.find({});
+        res.send(device);
     }
     catch(err){
-        console.log('could not get data');
+        res.status(404).send('could not get data');
     }
 }
 
-exports.fourt_api = async(req,res) => {
+exports.add_device = async(req,res) => {
     try{
-        let x = [3,4.2,9.8,6];
-        let time = new Date();
-        let h = time.getHours().toString();
-        let m = time.getMinutes().toString();
-        let s = time.getSeconds().toString();
-        res.write(x.toString()+'\n');
-        res.write(`${h}:${m}:${s}`);
-        res.send();
+        // let newDevice = await devices.insertOne({ name: req.body.device });
+        const newDevice = new devices({
+            name: req.body.device,
+            var_names: [],
+            var_units: []
+          });
+        await newDevice.save();
+        res.status(201).send('Device inserted');
     }
     catch(err){
-        console.log('could not get data');
+        res.status(404).send('could not get data');
+    }
+}
+
+exports.delete_device = async(req,res) => {
+    try {
+        await devices.findOneAndDelete({ _id: req.body.did })
+        res.status(200).send('deleted successful');
+    } catch (error) {
+        res.status(404).send('could not delete device');
+    }
+}
+                                                                 
+exports.get_variable = async(req,res) => {
+    try{
+        let variables = await devices.findOne({_id: req.body.id});
+        res.send(variables);
+    }
+    catch(err){
+        res.status(404).send('could not get data');
+    }
+}
+
+exports.add_variable = async(req,res) => {
+    try{
+        let data = await devices.updateOne({_id: req.body.id}, 
+        { $push: {var_names: req.body.varName , var_units: req.body.unitName } } );
+        res.send(data);
+    }
+    catch(err){
+        res.status(404).send('could not get data');
     }
 }

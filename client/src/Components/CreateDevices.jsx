@@ -3,14 +3,17 @@ import { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux'
 import { addDevice } from '../action';
 import { FaPlus } from 'react-icons/fa'
+import axios from 'axios';
 
 const CreateDevices = (props) => {
 
     let [device,setDevice] = useState('');
     let dispatch = useDispatch();
     let str = 'Create Device';
-    let myfunc = () => {
-        dispatch( addDevice(device) );    
+    let myfunc =async () => {
+        console.log('clicked');
+        let res = await axios.post('/api/addDevice',{device});
+        console.log(res);  
     }
     return (
         <div className='mt-3'>
@@ -56,7 +59,7 @@ const CreateDevices = (props) => {
                             <label htmlFor="device_name">Device name</label><br />
                             <input type="text" name="device_name" value={device} onChange={(e)=>{ setDevice(e.target.value) } }  style={{ width: "100%" }}/><br />
                             <label htmlFor="device_label">Device Label</label><br />
-                            <input type="text" name="device_label" value={device} style={{ textTransform: "lowercase",width: "100%" }} />
+                            <input type="text" name="device_label" value={device} onChange={()=> {} } style={{ textTransform: "lowercase",width: "100%" }} />
                         </div>
                         <div className="modal-footer">
                         <button type="button" className="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="offcanvas" onClick={myfunc}>Add Device</button>

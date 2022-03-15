@@ -1,4 +1,7 @@
-export let addDevice = (data) => {
+// import axios from 'axios';
+
+export let addDevice = async (data) => {
+    // let res = await axios.post('/api/addDevice',{ data });
     return {
         type: "ADD_DEVICE",
         payload: data
@@ -12,19 +15,22 @@ export let removeDevice = (id) => {
     }
 }
 
-export let addLabel = (label) => {
+// export let getDevices = async () => {
+//     let res = await axios.get('/api/getDevices');
+//     return {
+//         type: "GET_DEVICES",
+//         devices: action.payload
+//     }
+// }
+
+export let addChart = (label,threshold) => {
     return {
-        type: "ADD_LABEL",
-        payload: label
+        type: "ADD_CHART",
+        label: label,
+        threshold: threshold
     }
 }
 
-export let addThreshold = (threshold) => {
-    return {
-        type: "ADD_THRESHOLD",
-        payload: threshold
-    }
-}
 
 export let addVariable = (var_name,id) => {
     return {

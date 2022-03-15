@@ -2,7 +2,7 @@ import React from "react";
 import { FaPlus } from "react-icons/fa";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addLabel, addThreshold } from "../action";
+import { addChart } from "../action";
 
 const Offcanvas = (props) => {
 
@@ -39,78 +39,64 @@ const Offcanvas = (props) => {
         let sum=0;
         if(label1&&threshold1)
         {
-            dispatch( addLabel(label1) );
-            dispatch( addThreshold(threshold1) );
+            dispatch( addChart(label1,threshold1,topic) );
             sum++;
         }
         if(label2&&threshold2)
         {
-            dispatch( addLabel(label2) );
-            dispatch( addThreshold(threshold2) );
+            dispatch( addChart(label2,threshold2,topic) );
             sum++;
         }
         if(label3&&threshold3)
         {
-            dispatch( addLabel(label3) );
-            dispatch( addThreshold(threshold3) );
+            dispatch( addChart(label3,threshold3,topic) );
             sum++;
         }
         if(label4&&threshold4)
         {
-            dispatch( addLabel(label4) );
-            dispatch( addThreshold(threshold4) );
+            dispatch( addChart(label4,threshold4,topic) );
             sum++;
         }
         if(label5&&threshold5)
         {
-            dispatch( addLabel(label5) );
-            dispatch( addThreshold(threshold5) );
+            dispatch( addChart(label5,threshold5,topic) );
             sum++;
         }
         if(label6&&threshold6)
         {
-            dispatch( addLabel(label6) );
-            dispatch( addThreshold(threshold6) );
+            dispatch( addChart(label6,threshold6,topic) );
             sum++;
         }
         if(label7&&threshold7)
         {
-            dispatch( addLabel(label7) );
-            dispatch( addThreshold(threshold7) );
+            dispatch( addChart(label7,threshold7,topic) );
             sum++;
         }
         if(label8&&threshold8)
         {
-            dispatch( addLabel(label8) );
-            dispatch( addThreshold(threshold8) );
+            dispatch( addChart(label8,threshold8,topic) );
             sum++;
         }
         if(label9&&threshold9)
         {
-            dispatch( addLabel(label9) );
-            dispatch( addThreshold(threshold9) );
+            dispatch( addChart(label9,threshold9,topic) );
             sum++;
         }
         if(label10&&threshold10)
         {
-            dispatch( addLabel(label10) );
-            dispatch( addThreshold(threshold10) );
+            dispatch( addChart(label10,threshold10,topic) );
             sum++;
         }
         if(sum==0)
         {
             alert('Please add atleast one label and threshold');
         }
-        else 
-        {
-            props.getBool(true,topic);
-        }
     }
     return (
         <>
-            {/* <button className="btn btn-primary rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <button className="btn btn-primary rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                     <FaPlus />
-            </button> */}
+            </button>
             <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div className="offcanvas-header">
                     <h5 id="offcanvasRightLabel">Add New Widget</h5>
@@ -123,12 +109,12 @@ const Offcanvas = (props) => {
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button">
+                        <button type="button" className="nsbtn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Line Chart
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button">
+                        <button type="button" className="nsbtn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Pie Chart
                         </button>
                     </div>
@@ -177,25 +163,25 @@ const Offcanvas = (props) => {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <input  type="text" placeholder="Barchart Label 1" className="m-2" value={label1} onChange={e => { setLabel1(e.target.value) }}/>
+                            <input  type="text" placeholder="Label 1" className="m-2" value={label1} onChange={e => { setLabel1(e.target.value) }}/>
                             <input type="numeric" placeholder="Threshold 1" value={threshold1} onChange={e => { setThreshold1(e.target.value) }} />
-                            <input  type="text" placeholder="Barchart Label 2" className="m-2" value={label2} onChange={e => { setLabel2(e.target.value) }}/>
+                            <input  type="text" placeholder="Label 2" className="m-2" value={label2} onChange={e => { setLabel2(e.target.value) }}/>
                             <input type="numeric" placeholder="Threshold 2" value={threshold2} onChange={e => { setThreshold2(e.target.value) }} />
-                            <input  type="text" placeholder="Barchart Label 3" className="m-2" value={label3} onChange={e => { setLabel3(e.target.value) }}/>
+                            <input  type="text" placeholder="Label 3" className="m-2" value={label3} onChange={e => { setLabel3(e.target.value) }}/>
                             <input type="numeric" placeholder="Threshold 3" value={threshold3} onChange={e => { setThreshold3(e.target.value) }} />
-                            <input  type="text" placeholder="Barchart Label 4" className="m-2" value={label4} onChange={e => { setLabel4(e.target.value) }}/>
+                            <input  type="text" placeholder="Label 4" className="m-2" value={label4} onChange={e => { setLabel4(e.target.value) }}/>
                             <input type="numeric" placeholder="Threshold 4" value={threshold4} onChange={e => { setThreshold4(e.target.value) }} />
-                            <input  type="text" placeholder="Barchart Label 5" className="m-2" value={label5} onChange={e => { setLabel5(e.target.value) }}/>
+                            <input  type="text" placeholder="Label 5" className="m-2" value={label5} onChange={e => { setLabel5(e.target.value) }}/>
                             <input type="numeric" placeholder="Threshold 5" value={threshold5} onChange={e => { setThreshold5(e.target.value) }} />
-                            <input  type="text" placeholder="Barchart Label 6" className="m-2" value={label6} onChange={e => { setLabel6(e.target.value) }}/>
+                            <input  type="text" placeholder="Label 6" className="m-2" value={label6} onChange={e => { setLabel6(e.target.value) }}/>
                             <input type="numeric" placeholder="Threshold 6" value={threshold6} onChange={e => { setThreshold6(e.target.value) }} />
-                            <input  type="text" placeholder="Barchart Label 7" className="m-2" value={label7} onChange={e => { setLabel7(e.target.value) }}/>
+                            <input  type="text" placeholder="Label 7" className="m-2" value={label7} onChange={e => { setLabel7(e.target.value) }}/>
                             <input type="numeric" placeholder="Threshold 7" value={threshold7} onChange={e => { setThreshold7(e.target.value) }} />
-                            <input  type="text" placeholder="Barchart Label 8" className="m-2" value={label8} onChange={e => { setLabel8(e.target.value) }}/>
+                            <input  type="text" placeholder="Label 8" className="m-2" value={label8} onChange={e => { setLabel8(e.target.value) }}/>
                             <input type="numeric" placeholder="Threshold 8" value={threshold8} onChange={e => { setThreshold8(e.target.value) }} />
-                            <input  type="text" placeholder="Barchart Label 9" className="m-2" value={label9} onChange={e => { setLabel9(e.target.value) }}/>
+                            <input  type="text" placeholder="Label 9" className="m-2" value={label9} onChange={e => { setLabel9(e.target.value) }}/>
                             <input type="numeric" placeholder="Threshold 9" value={threshold9} onChange={e => { setThreshold9(e.target.value) }} />
-                            <input type="text" placeholder="Barchart Label 10"  className="m-2" value={label10} onChange={e => { setLabel10(e.target.value) }} />
+                            <input type="text" placeholder="Label 10"  className="m-2" value={label10} onChange={e => { setLabel10(e.target.value) }} />
                             <input  type="numeric" placeholder="Threshold 10" value={threshold10} onChange={e => { setThreshold10(e.target.value) }} />
                             <br />Topic <br />
                             <input type="text" value={topic} onChange={e => { setTopic(e.target.value) }} />

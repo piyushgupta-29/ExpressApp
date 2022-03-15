@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux'
 
 let totalDevices = [];
-let totalLabels = [];
-let totalThresholds = [];
+let totalCharts = [];
 
 export let showDevices = (state = totalDevices,action) => {
     switch(action.type)
@@ -17,6 +16,9 @@ export let showDevices = (state = totalDevices,action) => {
         let b = state.slice(action.payload+1);
         return a.concat(b);
 
+        // case "GET_DEVICE":
+        // return [...state]
+
         case "ADD_VARIABLE":
         let arr1 = [...state];
         arr1[action.id].var_names = arr1[action.id].var_names ? 
@@ -29,25 +31,25 @@ export let showDevices = (state = totalDevices,action) => {
             [...arr2[action.id].var_units,action.payload ] : [action.payload]  
         return arr2;
 
-        // case "REMOVE_VARIABLE":
-        // let arr3 = [...state]; 
-        // // arr3[action.id].var_names.filter((val,i) => {
-        // //     i !== action.payload
-        // // })
-        // // arr3[action.id].var_units.filter((val,i) => {
-        // //     i !== action.payload
-        // // })
-        // // console.log(arr3);
-        // return arr3;
+        case "REMOVE_VARIABLE":
+        let arr3 = [...state]; 
+        arr3[action.id].var_names = arr3[action.id].var_names.filter((val,i) => {
+          return i !== action.payload
+        })
+        arr3[action.id].var_units = arr3[action.id].var_units.filter((val,i) => {
+           return i !== action.payload
+        })
+        console.log(arr3);
+        return arr3;
         
         default: return state;
     }
 }
 
-export let showLabels = (state = totalLabels,action) => {
+export let showCharts = (state = totalCharts,action) => {
     switch(action.type)
     {
-        case "ADD_LABEL": 
+        case "ADD_CHART": 
         return [
             ...state,action.payload
         ]
@@ -55,24 +57,10 @@ export let showLabels = (state = totalLabels,action) => {
         default: return state;
     }
 }
-
-export let showThresholds = (state = totalThresholds,action) => {
-    switch(action.type)
-    {
-        case "ADD_THRESHOLD": 
-        return [
-            ...state,action.payload
-        ]
-
-        default: return state;
-    }
-}
-
 
 let rootReducer = combineReducers({
     showDevices,
-    showLabels,
-    showThresholds
+    showCharts
 })
 
 export default rootReducer;
