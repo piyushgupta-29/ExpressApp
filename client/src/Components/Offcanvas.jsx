@@ -3,10 +3,13 @@ import { FaPlus } from "react-icons/fa";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addChart } from "../action";
+import axios from "axios";
 
 const Offcanvas = (props) => {
 
     let [topic,setTopic] = useState('');
+    let [labels,setLabels] = useState([]);
+    let [thresholds,setThresholds] = useState([]);
 
     let [label1,setLabel1] = useState('');
     let [label2,setLabel2] = useState('');
@@ -31,7 +34,7 @@ const Offcanvas = (props) => {
     let [threshold10,setThreshold10] = useState('');
 
     let dispatch = useDispatch();
-    let clickHandler = () => {
+    let clickHandler = async () => {
         if(!topic)
         {
             alert('Please add Topic');
@@ -39,57 +42,72 @@ const Offcanvas = (props) => {
         let sum=0;
         if(label1&&threshold1)
         {
-            dispatch( addChart(label1,threshold1,topic) );
+            setLabels([...labels,label1]);
+            setThresholds([...thresholds,threshold1]);
             sum++;
         }
         if(label2&&threshold2)
         {
-            dispatch( addChart(label2,threshold2,topic) );
+            setLabels([...labels,label2]);
+            setThresholds([...thresholds,threshold2]);
             sum++;
         }
         if(label3&&threshold3)
         {
-            dispatch( addChart(label3,threshold3,topic) );
+            setLabels([...labels,label3]);
+            setThresholds([...thresholds,threshold3]);
             sum++;
         }
         if(label4&&threshold4)
         {
-            dispatch( addChart(label4,threshold4,topic) );
+            setLabels([...labels,label4]);
+            setThresholds([...thresholds,threshold4]);
             sum++;
         }
         if(label5&&threshold5)
         {
-            dispatch( addChart(label5,threshold5,topic) );
+            setLabels([...labels,label5]);
+            setThresholds([...thresholds,threshold5]);
             sum++;
         }
         if(label6&&threshold6)
         {
-            dispatch( addChart(label6,threshold6,topic) );
+            setLabels([...labels,label6]);
+            setThresholds([...thresholds,threshold6]);
             sum++;
         }
         if(label7&&threshold7)
         {
-            dispatch( addChart(label7,threshold7,topic) );
+            setLabels([...labels,label7]);
+            setThresholds([...thresholds,threshold7]);
             sum++;
         }
         if(label8&&threshold8)
         {
-            dispatch( addChart(label8,threshold8,topic) );
+            setLabels([...labels,label8]);
+            setThresholds([...thresholds,threshold8]);
             sum++;
         }
         if(label9&&threshold9)
         {
-            dispatch( addChart(label9,threshold9,topic) );
+            setLabels([...labels,label9]);
+            setThresholds([...thresholds,threshold9]);
             sum++;
         }
         if(label10&&threshold10)
         {
-            dispatch( addChart(label10,threshold10,topic) );
+            setLabels([...labels,label10]);
+            setThresholds([...thresholds,threshold10]);
             sum++;
         }
         if(sum==0)
         {
             alert('Please add atleast one label and threshold');
+        }
+        else 
+        {
+            let res = await axios.post('/api/addChart',{ topic, labels, thresholds});
+            console.log(res);
         }
     }
     return (
@@ -104,52 +122,52 @@ const Offcanvas = (props) => {
                 </div>
                 <div className="offcanvas-body">
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Bar Chart
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Line Chart
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Pie Chart
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button">
+                        <button type="button" className="nsbtn">
                             Gauge
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button">
+                        <button type="button" className="nsbtn">
                             Clock
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button">
+                        <button type="button" className="nsbtn">
                             Battery
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button">
+                        <button type="button" className="nsbtn">
                             HTML Canvas
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button">
+                        <button type="button" className="nsbtn">
                             Indicator
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button">
+                        <button type="button" className="nsbtn">
                             Manual Input value
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button">
+                        <button type="button" className="nsbtn">
                             Image
                         </button>
                     </div>

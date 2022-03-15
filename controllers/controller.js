@@ -7,22 +7,23 @@ exports.get_charts = async(req, res) => {
         res.send(chart);
     }
     catch(err){
-        res.status(404).send('could not get data');
+        res.status(404).send('could not get charts');
     }
 }
 
 exports.add_chart = async(req,res) => {
     try{
-        let newChart = await charts.insertOne({ 
+        let newChart = new charts({ 
             topic: req.body.topic,
             type: 'Bar',
-            labels: [],
-            thresholds: []
+            labels: req.body.labels,
+            thresholds: req.body.thresholds
         });
-        res.status(201).send('Chart inserted');
+        await newChart.save();
+        res.status(201).send(req.body);
     }
     catch(err){
-        res.status(404).send('could not get data');
+        res.status(404).send('Chart not inserted');
     }
 }
 
@@ -32,7 +33,7 @@ exports.get_devices = async(req, res) => {
         res.send(device);
     }
     catch(err){
-        res.status(404).send('could not get data');
+        res.status(404).send('could not get devices');
     }
 }
 
@@ -43,12 +44,12 @@ exports.add_device = async(req,res) => {
             name: req.body.device,
             var_names: [],
             var_units: []
-          });
+        });
         await newDevice.save();
         res.status(201).send('Device inserted');
     }
     catch(err){
-        res.status(404).send('could not get data');
+        res.status(404).send('could not add device');
     }
 }
 
@@ -67,7 +68,7 @@ exports.get_variable = async(req,res) => {
         res.send(variables);
     }
     catch(err){
-        res.status(404).send('could not get data');
+        res.status(404).send('could not get variables');
     }
 }
 
@@ -78,6 +79,6 @@ exports.add_variable = async(req,res) => {
         res.send(data);
     }
     catch(err){
-        res.status(404).send('could not get data');
+        res.status(404).send('could not add variable');
     }
 }

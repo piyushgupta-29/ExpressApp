@@ -28,22 +28,22 @@ const CreateDevices = (props) => {
                 </div>
                 <div className="offcanvas-body">
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Blank Device
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button">
+                        <button type="button" className="nsbtn">
                             Arduino
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button">
+                        <button type="button" className="nsbtn">
                             Alorium Technology
                         </button>
                     </div>
                     <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" type="button">
+                        <button type="button" className="nsbtn">
                             Controllino
                         </button>
                     </div>
