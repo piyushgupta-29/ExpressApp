@@ -1,18 +1,11 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react';
+import React from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import { MdDelete } from "react-icons/md";
-import { removeDevice } from '../action';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 
 const Devices = (props) => {
-    let dispatch = useDispatch();
     let path = `/variables/${props.devname}/${props.id}`;
-    // useEffect(async () => {
-    //     console.log(props.id);
-        
-    // })
 
     return (
         <div className='container mt-5'>
@@ -25,9 +18,8 @@ const Devices = (props) => {
                 <div className="card-body">
                     <span className="card-text">{props.vars} Variables</span>
                     <MdDelete style={{ fontSize: "2rem",color: "rgb(0,0,0,.5)", marginLeft: "7rem" }} onClick={async () => { 
-                        let did = props.id;
-                        let res = await axios.post('/api/deleteDevice', {did} );
-                        console.log(res);
+                        let dev_id = props.id;
+                        let res = await axios.post('/api/deleteDevice', { dev_id } );
                         }}/>
                 </div>
             </div>

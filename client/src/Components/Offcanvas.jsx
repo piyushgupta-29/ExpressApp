@@ -1,5 +1,11 @@
 import React from "react";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus,FaRegChartBar,FaMapMarkerAlt } from "react-icons/fa";
+import { MdBattery80 } from 'react-icons/md'
+import { FcClock } from 'react-icons/fc'
+import { BiTable } from 'react-icons/bi'
+import { ImSwitch } from 'react-icons/im'
+import { BsThermometerHalf,BsImage } from 'react-icons/bs'
+import { AiFillPieChart,AiOutlineLineChart } from 'react-icons/ai'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addChart } from "../action";
@@ -8,8 +14,9 @@ import axios from "axios";
 const Offcanvas = (props) => {
 
     let [topic,setTopic] = useState('');
-    let [labels,setLabels] = useState([]);
-    let [thresholds,setThresholds] = useState([]);
+    // let [labels,setLabels] = useState([]);
+    // let [thresholds,setThresholds] = useState([]);
+    let [type,setType] = useState('');
 
     let [label1,setLabel1] = useState('');
     let [label2,setLabel2] = useState('');
@@ -40,64 +47,65 @@ const Offcanvas = (props) => {
             alert('Please add Topic');
         }
         let sum=0;
+        let labels = [],thresholds=[];
         if(label1&&threshold1)
         {
-            setLabels([...labels,label1]);
-            setThresholds([...thresholds,threshold1]);
+            labels.push(label1);
+            thresholds.push(threshold1);
             sum++;
         }
         if(label2&&threshold2)
         {
-            setLabels([...labels,label2]);
-            setThresholds([...thresholds,threshold2]);
+            labels.push(label2);
+            thresholds.push(threshold2);
             sum++;
         }
         if(label3&&threshold3)
         {
-            setLabels([...labels,label3]);
-            setThresholds([...thresholds,threshold3]);
+            labels.push(label3);
+            thresholds.push(threshold3);
             sum++;
         }
         if(label4&&threshold4)
         {
-            setLabels([...labels,label4]);
-            setThresholds([...thresholds,threshold4]);
+            labels.push(label4);
+            thresholds.push(threshold4);
             sum++;
         }
         if(label5&&threshold5)
         {
-            setLabels([...labels,label5]);
-            setThresholds([...thresholds,threshold5]);
+            labels.push(label5);
+            thresholds.push(threshold5);
             sum++;
         }
         if(label6&&threshold6)
         {
-            setLabels([...labels,label6]);
-            setThresholds([...thresholds,threshold6]);
+            labels.push(label6);
+            thresholds.push(threshold6);
             sum++;
         }
         if(label7&&threshold7)
         {
-            setLabels([...labels,label7]);
-            setThresholds([...thresholds,threshold7]);
+            labels.push(label7);
+            thresholds.push(threshold7);
             sum++;
         }
         if(label8&&threshold8)
         {
-            setLabels([...labels,label8]);
-            setThresholds([...thresholds,threshold8]);
+            labels.push(label8);
+            thresholds.push(threshold8);
             sum++;
         }
         if(label9&&threshold9)
         {
-            setLabels([...labels,label9]);
-            setThresholds([...thresholds,threshold9]);
+            labels.push(label9);
+            thresholds.push(threshold9);
             sum++;
         }
         if(label10&&threshold10)
         {
-            setLabels([...labels,label10]);
-            setThresholds([...thresholds,threshold10]);
+            labels.push(label10);
+            thresholds.push(threshold10);
             sum++;
         }
         if(sum==0)
@@ -106,7 +114,8 @@ const Offcanvas = (props) => {
         }
         else 
         {
-            let res = await axios.post('/api/addChart',{ topic, labels, thresholds});
+            console.log(labels);
+            let res = await axios.post('/api/addChart',{ topic, labels, thresholds, type});
             console.log(res);
         }
     }
@@ -120,59 +129,72 @@ const Offcanvas = (props) => {
                     <h5 id="offcanvasRightLabel">Add New Widget</h5>
                     <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div className="offcanvas-body">
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div className="offcanvas-body d-flex flex-wrap">
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 m-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem"}}>
+                        <FaRegChartBar style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => { setType('Bar') }} >
                             Bar Chart
                         </button>
                     </div>
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 m-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem"}}>
+                        <AiOutlineLineChart style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => { setType('Bar') }} >
                             Line Chart
                         </button>
                     </div>
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 m-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem"}}>
+                        <AiFillPieChart style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => { setType('Bar') }} >
                             Pie Chart
                         </button>
                     </div>
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn">
-                            Gauge
-                        </button>
-                    </div>
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn">
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 m-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem"}}>
+                        <FcClock style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => { setType('Bar') }} >
                             Clock
                         </button>
                     </div>
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn">
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 m-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem"}}>
+                        <BiTable style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => { setType('Bar') }} >
+                            Table
+                        </button>
+                    </div>
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 m-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem"}}>
+                        <MdBattery80 style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => { setType('Bar') }} >
                             Battery
                         </button>
                     </div>
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn">
-                            HTML Canvas
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 m-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem"}}>
+                        <FaMapMarkerAlt style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => { setType('Bar') }} >
+                            Map
                         </button>
                     </div>
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn">
-                            Indicator
-                        </button>
-                    </div>
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn">
-                            Manual Input value
-                        </button>
-                    </div>
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn">
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 m-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem"}}>
+                        <BsImage style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => { setType('Bar') }} >
                             Image
                         </button>
                     </div>
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 m-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem"}}>
+                        <ImSwitch style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => { setType('Bar') }} >
+                            Switch
+                        </button>
+                    </div>
 
-                
+                    
                 <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
                     <div className="modal-content">

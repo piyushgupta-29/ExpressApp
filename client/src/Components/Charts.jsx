@@ -1,38 +1,35 @@
 import React from "react";
 import { Bar, Line, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto';
-import { useSelector } from "react-redux";
 
 const Charts = (props) => {
 
-    let totalCharts = useSelector(state => state.showCharts );
-
     return (
         <>
-            <div style={{ width: 700 }} className="d-flex">
-                
-            {/* { props.type === "Pie" ? <Pie
+            <div style={{ width: 400 }} >
+        
+            { props.type === "Pie" ? <Pie style={{marginTop: "5rem"}}
                 data={ {
-                    labels: totalLabel.map((val) => val ),
+                    labels: props.labels.map((val) => val ),
                     datasets: [{
                         label: props.topic,
-                        data: totalThreshold.map(val => val ),
-                        backgroundColor: 'blue'
+                        data: props.thresholds.map(val => val ),
+                        backgroundColor: ['red','blue','green','yellow','pink']
                     }
                 ]
                 }}
                 />
-                : props.type === "Line" ? <Line
+                : props.type === "Line" ? <Line style={{marginTop: "3rem"}}
                 data={ {
-                    labels: totalLabel.map((val) => val ),
+                    labels: props.labels.map((val) => val ),
                     datasets: [{
                         label: props.topic,
-                        data: totalThreshold.map(val => val ),
+                        data: props.thresholds.map(val => val ),
                         backgroundColor: 'blue'
                     }
                 ]
-                }} /> : */}
-                <Line
+                }} /> :
+                <Bar
                 data={ {
                     labels: props.labels.map((val) => val ),
                     datasets: [{
@@ -43,7 +40,7 @@ const Charts = (props) => {
                 ]
                 }}
                 />
-            {/* } */}
+            }
             </div>
         </>
     );

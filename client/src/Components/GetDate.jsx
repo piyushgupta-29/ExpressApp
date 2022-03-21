@@ -12,10 +12,10 @@ const GetDate = () => {
         hours = `0${hours}`;
     const dat = `${days[d.getDay()]} ${d.getDate()} ${d.getFullYear()} ${hours}:${minutes}`;
     return (
-        <>
+        <div className='d-flex'>
             <BsFillCalendarFill className='calendar'/>
             <p style={{ fontSize: "1rem" , marginTop: ".5rem"}}>{dat}</p>
-        </>
+        </div>
     );
 }
 

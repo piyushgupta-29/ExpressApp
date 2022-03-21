@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux'
 import { addDevice } from '../action';
 import { FaPlus } from 'react-icons/fa'
+import { AiOutlineControl,AiFillRobot } from 'react-icons/ai'
+import { DiHtml5DeviceAccess,DiRasberryPi } from 'react-icons/di'
+import { SiArduino,SiAdafruit } from 'react-icons/si'
 import axios from 'axios';
 
 const CreateDevices = (props) => {
@@ -26,25 +29,47 @@ const CreateDevices = (props) => {
                     <h5 id="offcanvasRightLabel">Add New Device</h5>
                     <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div className="offcanvas-body">
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div className="offcanvas-body d-flex flex-wrap">
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 mx-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem","height": "15rem"}}>
+                        <DiHtml5DeviceAccess style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
                             Blank Device
                         </button>
                     </div>
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn">
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 mx-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem","height": "15rem"}}>
+                        <SiArduino style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
                             Arduino
                         </button>
                     </div>
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn">
-                            Alorium Technology
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 mx-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem","height": "15rem"}}>
+                        <SiAdafruit style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                            Adafruit
                         </button>
                     </div>
-                    <div className="d-grid gap-2">
-                        <button type="button" className="nsbtn">
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 mx-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem","height": "15rem"}}>
+                        <AiOutlineControl style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
                             Controllino
+                        </button>
+                    </div>
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 mx-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem","height": "15rem"}}>
+                        <DiRasberryPi style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                            Raspberry Pie
+                        </button>
+                    </div>
+                    <div className="d-flex flex-column align-items-center justify-content-center p-2 mx-2" style={{"border": "1px solid rgb(0,0,0,0.5)","borderRadius": "5%","width": "6.5rem","height": "15rem"}}>
+                        <AiFillRobot style={{"width": "5rem","height": "5rem","color": "rgb(54, 179, 236)"}}/>
+                        
+                        <button type="button" className="nsbtn" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                            DF Robot
                         </button>
                     </div>
                 

@@ -18,7 +18,7 @@ const VariablePage = () => {
 	let arr = [...Array(10).keys()];
 	
 	useEffect(async () => {
-		let res = await axios.post('/api/getVariables',{id});
+		let res = await axios.post('/api/getVariables',{ id });
 		setVariables(res.data);
 	},[variables])
 
@@ -27,7 +27,7 @@ const VariablePage = () => {
 	<Link to="/devices"> 
 		<GrFormPreviousLink style={{ backgroundColor: "rgb(54, 179, 236)", color: "white", fontSize: "2rem",cursor: "pointer" }} className="rounded-circle mt-2 mx-2"/>
 	</Link>
-    <div className='container mt-5'>
+    <div className='container mt-5'> 
         <div className="row">
 			<div className="col-md-3">
 				<div className='device_title d-flex'>
@@ -57,7 +57,10 @@ const VariablePage = () => {
 							<div> 
 								<span className="card-text" style={{color: "rgb(0,0,0,0.5)"}}>Unit</span>
 								<MdDelete style={{ fontSize: "2rem",color: "rgb(0,0,0,.5)", marginLeft: "10rem" }} 
-								onClick={ () => { dispatch( removeVariable(val,id) )} } />
+								onClick={ async() => { 
+									let res = await axios.post('/api/deleteVariable', { val,id });
+									console.log(res);
+								} } />
 							</div>
 								{variables.var_units[val]}
 						</div>

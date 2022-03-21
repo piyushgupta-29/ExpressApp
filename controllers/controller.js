@@ -15,12 +15,12 @@ exports.add_chart = async(req,res) => {
     try{
         let newChart = new charts({ 
             topic: req.body.topic,
-            type: 'Bar',
-            labels: req.body.labels,
-            thresholds: req.body.thresholds
+            type: req.body.type,
+            labels: [...req.body.labels],
+            thresholds: [...req.body.thresholds]
         });
         await newChart.save();
-        res.status(201).send(req.body);
+        res.status(201).send(req.body.labels);
     }
     catch(err){
         res.status(404).send('Chart not inserted');
@@ -55,7 +55,7 @@ exports.add_device = async(req,res) => {
 
 exports.delete_device = async(req,res) => {
     try {
-        await devices.findOneAndDelete({ _id: req.body.did })
+        await devices.findOneAndDelete({ _id: req.body.dev_id })
         res.status(200).send('deleted successful');
     } catch (error) {
         res.status(404).send('could not delete device');
@@ -80,5 +80,15 @@ exports.add_variable = async(req,res) => {
     }
     catch(err){
         res.status(404).send('could not add variable');
+    }
+}
+
+exports.delete_variable = async(req,res) => {
+    try {
+        devices.updateOne({ _id: req.body.id },
+        { $pull: { 'software.services': "yahoo" }}
+     );
+    } catch (error) {
+        res.status(404).send('could not delete variable');
     }
 }

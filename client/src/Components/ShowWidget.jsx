@@ -3,7 +3,6 @@ import Offcanvas from './Offcanvas';
 import { FaPlus } from "react-icons/fa";
 import Charts from "./Charts";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import axios from "axios";
 
 const ShowWidget = () => {
@@ -12,10 +11,9 @@ const ShowWidget = () => {
     let [charts,setCharts] = useState();
     useEffect( async () => {
         let res = await axios.get('/api/getCharts');
-        console.log(res);
         setCharts(res.data);
     },[]);
-    console.log(charts);
+    // console.log(charts);
     return (
         <>
             
@@ -23,12 +21,12 @@ const ShowWidget = () => {
                 <Offcanvas />
             </div>
             {
-                charts !==undefined ? charts.map((val) =>
+                charts !==undefined && charts.length > 0 ? charts.map((val) =>
                     <div className="container d-flex" key={val._id}>
-                        <Charts topic={val.topic} labels={val.labels} thresholds={val.thresholds}/>
+                        <Charts topic={val.topic} labels={val.labels} thresholds={val.thresholds} type={val.type} />
                     </div>
                 ) : 
-                <div className="add-widget">
+                <div className="add-widget mx-5">
                     <button className="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <FaPlus />
                     </button>
