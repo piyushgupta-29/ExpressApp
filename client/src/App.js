@@ -27,7 +27,7 @@ function App() {
                         {/* {console.log(window.location.href)} */}
                         {
                             window.location.href ==='http://localhost:3000/devices' ? null :
-                            <span className='mt-1'> <BiArrowBack style={{ "fontSize": "1.5rem" }} /> </span>
+                            <span className='mt-1'> <a href='/devices' style={{"textDecoration": "none", "color": "white"}}> <BiArrowBack style={{ "fontSize": "1.5rem" }} /> </a> </span>
                         }
                         <p>Devices</p>
                     </div>

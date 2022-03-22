@@ -24,10 +24,10 @@ const VariablePage = () => {
 
   return (
 	<>
-	<Link to="/devices"> 
+	{/* <Link to="/devices"> 
 		<GrFormPreviousLink style={{ backgroundColor: "rgb(54, 179, 236)", color: "white", fontSize: "2rem",cursor: "pointer" }} className="rounded-circle mt-2 mx-2"/>
-	</Link>
-    <div className='container mt-5'> 
+	</Link> */}
+    <div className='container' style={{ "margin": "6rem" }}> 
         <div className="row">
 			<div className="col-md-3">
 				<div className='device_title d-flex'>
@@ -57,7 +57,6 @@ const VariablePage = () => {
 
 					<h6 style={{color: "rgb(0,0,0,0.5)"}} className="mt-4">Latitude</h6>
 					<h6 style={{color: "rgb(0,0,0,0.5)"}} className="mt-4">Longitude</h6>
-					<hr />
 				</div>
 			</div>
 			<div className="col-md-9 d-flex flex-wrap justify-content-evenly">
@@ -80,7 +79,7 @@ const VariablePage = () => {
 									console.log(res);
 								} } />
 							</div>
-								{variables.var_units[val]}
+							<p style={{ "color": "rgb(0,0,0,0.7)" }} > {variables.var_units[val]} </p>
 						</div>
 					</div> 
 				 } ) : 	null

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import Offcanvas from './Offcanvas';
-import { FaPlus } from "react-icons/fa";
 import Charts from "./Charts";
 import { useState } from "react";
 import axios from "axios";
+import { FaPlus } from "react-icons/fa";
 
 const ShowWidget = () => {
     let [type,setType] = useState('');

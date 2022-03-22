@@ -1,10 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display:ital,wght@1,600&display=swap');
 
+body{
+    font-family: 'Lora', serif;
+}
 .navbar{
   background-color: #111f3d;
   padding: .5rem 2rem;
 }
 .navbar-brand{
-    margin-right: 30rem;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+    margin-right: 25rem;
 }
 .collapse{
     align-self: center;
@@ -93,5 +99,5 @@
     height: 7rem;
 }
 input:focus{
-    border: 1px solid #007bff;
+    outline: none;
 }
