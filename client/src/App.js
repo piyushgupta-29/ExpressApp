@@ -7,6 +7,7 @@ import Navbar from './Components/Navbar';
 import DevicePage from './Components/DevicePage';
 import VariablePage from './Components/VariablePage';
 import { FaAlignJustify } from 'react-icons/fa'
+import { BiArrowBack } from 'react-icons/bi'
 
 function App() {
     return (
@@ -22,7 +23,14 @@ function App() {
                     <GetDate className="date"/>
                 </div>:
                 <div className="d-flex justify-content-between second-nav">
-                    <p>Devices</p>
+                    <div className='d-flex'>
+                        {/* {console.log(window.location.href)} */}
+                        {
+                            window.location.href ==='http://localhost:3000/devices' ? null :
+                            <span className='mt-1'> <BiArrowBack style={{ "fontSize": "1.5rem" }} /> </span>
+                        }
+                        <p>Devices</p>
+                    </div>
                     <GetDate className="date"/>
                 </div>
             }

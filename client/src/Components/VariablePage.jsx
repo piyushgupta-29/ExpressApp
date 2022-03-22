@@ -33,19 +33,37 @@ const VariablePage = () => {
 				<div className='device_title d-flex'>
 						<p style={{ color: "white", fontSize: "1.5rem", alignSelf: "flex-end", paddingLeft: "1rem"}}>{name}</p>
 				</div>
-				<div style={{backgroundColor: "white",minHeight: "200px",padding: "1rem"}}>
-					<h6 style={{color: "rgb(0,0,0,0.5)"}}>Description</h6>
+				<div style={{backgroundColor: "white",height: "30rem",padding: "1rem"}}>
+					<h6 style={{color: "rgb(0,0,0,0.5)"}} className="mt-4">Description</h6>
 					<input type="text" style={{borderTop: "none",borderRight: "none",borderLeft: "none"}}
 					 value={desc} onChange={e => { setDesc(e.target.value) }} placeholder="Change descripton"/>
-					<h6 style={{color: "rgb(0,0,0,0.5)"}} className="mt-3">Api Label</h6>
+
+					<h6 style={{color: "rgb(0,0,0,0.5)"}} className="mt-4">API Label</h6>
 					<input type="text" style={{borderTop: "none",borderRight: "none",borderLeft: "none"}}
-					 value={apiLabel} onChange={e => { setApiLabel(e.target.value) }} placeholder={name.toLowerCase()}/>
+					 value={apiLabel} onChange={e => { setApiLabel(e.target.value) }} placeholder={name.toLowerCase()} />
+
+					<h6 style={{color: "rgb(0,0,0,0.5)"}} className="mt-4">ID</h6>
+					<input type="text" style={{borderTop: "none",borderRight: "none",borderLeft: "none"}}
+					 value={ id } onChange={e => { }} placeholder={name.toLowerCase()} />
+
+					<div className="d-flex justify-content-between align-items-center my-4">
+						<h6 style={{color: "rgb(0,0,0,0.5)"}} >Mode</h6>
+						<select class="form-select" aria-label="Default select example" style={{"width": "40%"}}>
+							<option selected>Auto</option>
+							<option value="1">Manual</option>
+							<option value="2">new-variable</option>
+						</select>
+					</div>
+
+					<h6 style={{color: "rgb(0,0,0,0.5)"}} className="mt-4">Latitude</h6>
+					<h6 style={{color: "rgb(0,0,0,0.5)"}} className="mt-4">Longitude</h6>
+					<hr />
 				</div>
 			</div>
 			<div className="col-md-9 d-flex flex-wrap justify-content-evenly">
 				{ variables !== undefined ? arr.map( (val,i) => 
 				{   return val >= variables.var_names.length ? null : 
-					<div className="card my-5 " style={{minWidth: "18rem",minHeight: "10rem"}} key={i}>
+					<div className="card my-5 " style={{width: "18rem",height: "13rem"}} key={i}>
 						<a href="#" style={{ textDecoration: "none"}}>
 							<div className='device_titl d-flex'>
 								<p style={{ color: "white", fontSize: "1.5rem", alignSelf: "flex-end", paddingLeft: "1rem"}}>
@@ -56,7 +74,7 @@ const VariablePage = () => {
 						<div className="card-body">
 							<div> 
 								<span className="card-text" style={{color: "rgb(0,0,0,0.5)"}}>Unit</span>
-								<MdDelete style={{ fontSize: "2rem",color: "rgb(0,0,0,.5)", marginLeft: "10rem" }} 
+								<MdDelete style={{ fontSize: "2rem",color: "rgb(0,0,0,.5)", marginLeft: "11rem" }} 
 								onClick={ async() => { 
 									let res = await axios.post('/api/deleteVariable', { val,id });
 									console.log(res);
@@ -67,7 +85,7 @@ const VariablePage = () => {
 					</div> 
 				 } ) : 	null
 				}
-				<div className="add-widget mt-5" style={{width: "17rem",height: "12rem"}}>
+				<div className="add-widget mt-5" style={{width: "17rem",height: "13rem"}}>
 					<button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
 						<FaPlus />
 					</button>
