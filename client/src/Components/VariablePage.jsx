@@ -75,8 +75,9 @@ const VariablePage = () => {
 								<span className="card-text" style={{color: "rgb(0,0,0,0.5)"}}>Unit</span>
 								<MdDelete style={{ fontSize: "2rem",color: "rgb(0,0,0,.5)", marginLeft: "11rem" }} 
 								onClick={ async() => { 
-									let res = await axios.post('/api/deleteVariable', { val,id });
-									console.log(res);
+									let var_name = variables.var_names[val];
+									let unit_name = variables.var_units[val];
+									let res = await axios.post('/api/deleteVariable', { var_name,unit_name,id });
 								} } />
 							</div>
 							<p style={{ "color": "rgb(0,0,0,0.7)" }} > {variables.var_units[val]} </p>
@@ -106,9 +107,7 @@ const VariablePage = () => {
 								</div>
 								<div className="modal-footer">
 									<button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={async() => { 
-										console.log('clicked');
 										let res = await axios.post('/api/addVariable', {varName,unitName,id});
-										console.log(res);
 										}}>
 										Add Variable
 									</button>

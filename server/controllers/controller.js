@@ -85,9 +85,10 @@ exports.add_variable = async(req,res) => {
 
 exports.delete_variable = async(req,res) => {
     try {
-        await devices.updateOne({ _id: req.body.id },
-        { $pull: { var_name: req.body.val }}
-     );
+        let data = await devices.updateOne({ _id: req.body.id },
+        { $pull: { var_names : req.body.var_name ,var_units : req.body.unit_name }},
+        {multi: true});
+        res.send(data);
     } catch (error) {
         res.status(404).send('could not delete variable');
     }
